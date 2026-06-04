@@ -25,13 +25,12 @@ This project automates basic data inspection and cleaning tasks, allowing users 
 
 ```text
 data-pipeline-cli/
-├── main.py
-├── cleaner.py
-├── inspector.py
-├── sample_data.csv
-├── requirements.txt
-├── .gitignore
-└── README.md
+  main.py
+  cleaner.py
+  inspector.py
+  sample_data.csv
+  requirements.txt
+  .gitignorREADME.md
 ```
 
 ### Files
