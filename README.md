@@ -76,7 +76,7 @@ V1
 
 * JSON support
 * Excel support
-* Rich terminal reports
+
 * Logging
 * Enhanced error handling
 * Configurable cleaning options
