@@ -20,6 +20,6 @@ def inspect_data(df:pd.DataFrame) -> None:
     print("\n...DUPLICATES...")
     print(df.duplicated().sum())
 
-    print("\n...STATISTICS...")
-    print(df.describe())
+    #print("\n...STATISTICS...")
+   # print(df.describe())
 
