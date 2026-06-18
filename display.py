@@ -1,16 +1,21 @@
 
-
 from rich.panel import Panel
 from rich.console import Console
+from rich.align import Align
+from rich.text import Text
+
 
 console = Console()
 
 console.print(
         Panel(
-             "Reads CSV and JSON files and generates insights",
+                Align.center("Reads CSV,JSON and EXCEL files and generates insights"),
              title= "Data pipeline cli tool",
-             subtitle= "V2"
-
+             subtitle= "V2",
+             title_align = "center",
+             subtitle_align = "center",
+             width = 100,
+             height = 10,
               
               
         )
