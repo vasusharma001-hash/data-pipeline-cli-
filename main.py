@@ -12,7 +12,9 @@ from export import export_output
 parser = argparse.ArgumentParser()
 parser.add_argument("--file")
 args = parser.parse_args()
+print("input file")
 print(args.file)
+
 
 df = load_data(args.file)
 print(df)

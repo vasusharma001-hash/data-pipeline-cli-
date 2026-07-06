@@ -9,8 +9,8 @@ def export_output(cleaned_df , args_file):
     elif args_file.endswith(".json"):
      cleaned_df.to_json(
                     "output.json",
-                    orient="records",
-                    indent=4
+                    orient = "records", 
+                    indent = 4
 
 
      )
