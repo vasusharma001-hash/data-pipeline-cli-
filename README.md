@@ -1,45 +1,62 @@
 # Data Pipeline CLI Tool
 
-A command-line tool for loading, cleaning, inspecting, and exporting structured datasets.
-
-## Problem
-
-Real-world datasets are often messy and difficult to inspect manually. Common issues include:
-
-* Duplicate records
-* Missing values
-* Poor data quality
-
-This project automates basic data inspection and cleaning tasks, allowing users to quickly prepare datasets for further analysis.
+A command-line tool for loading, cleaning, inspecting, and exporting structured datasets from local files and REST APIs.
 
 
-## Features
+# Problem
 
-* Load CSV, JSON, and Excel (.xlsx) files
-* Inspect dataset information
-* Remove duplicate rows
-* Remove rows containing missing values
-* Generate dataset summaries
-* Display reports in a formatted terminal UI using Rich
-* Export cleaned datasets back to CSV, JSON, or Excel format
+Real-world datasets are often messy and difficult to inspect manually.
 
+Common issues include:
 
-## Supported File Formats
+- Duplicate records
+- Missing values
+- Inconsistent data formats
+- Multiple input sources (CSV, Excel, APIs)
 
-### Input
-
-* CSV (.csv)
-* JSON (.json)
-* Excel (.xlsx)
-
-### Output
-
-* CSV (.csv)
-* JSON (.json)
-* Excel (.xlsx)
+This project automates common data preparation tasks and generates a clean, structured dataset ready for further analysis.
 
 
-## Project Structure
+# Features
+
+- Load CSV files
+- Load JSON files
+- Load Excel (.xlsx) files
+- Load data directly from REST APIs
+- Automatically flatten nested JSON responses
+- Inspect dataset structure
+- Remove duplicate rows
+- Remove rows containing missing values
+- Display formatted reports using Rich
+- Export cleaned datasets
+- CLI interface using argparse
+
+
+# Supported Input Sources
+
+### Local Files
+
+- CSV (.csv)
+- JSON (.json)
+- Excel (.xlsx)
+
+### REST APIs
+
+Example:
+
+```bash
+python main.py --url https://jsonplaceholder.typicode.com/users
+```
+
+
+# Supported Output Formats
+
+- CSV (.csv)
+- JSON (.json)
+- Excel (.xlsx)
+
+
+# Project Structure
 
 ```text
 data-pipeline-cli/
@@ -47,7 +64,6 @@ data-pipeline-cli/
 main.py
 loader.py
 cleaner.py
-inspector.py
 display.py
 export.py
 
@@ -60,19 +76,17 @@ README.md
 .gitignore
 ```
 
-## Files
 
-* `main.py` - Entry point and workflow controller
-* `loader.py` - File loading functions
-* `cleaner.py` - Data cleaning functions
-* `inspector.py` - Dataset inspection functions
-* `display.py` - Rich terminal report generation
-* `export.py` - Export cleaned datasets
+# Modules
+
+- **main.py** — Controls the complete pipeline workflow
+- **loader.py** — Loads data from files and REST APIs
+- **cleaner.py** — Removes duplicates and missing values
+- **display.py** — Generates Rich terminal reports
+- **export.py** — Exports cleaned datasets
 
 
-## Installation
-
-Clone the repository and install dependencies.
+# Installation
 
 ```bash
 git clone https://github.com/vasusharma001-hash/data-pipeline-cli-.git
@@ -83,58 +97,80 @@ pip install -r requirements.txt
 ```
 
 
-## Usage
+# Usage
 
-Run the tool with any supported file type.
+### CSV
 
 ```bash
 python main.py --file sample_data.csv
 ```
 
+### JSON
+
 ```bash
 python main.py --file sample_data.json
 ```
+
+### Excel
 
 ```bash
 python main.py --file sample_data.xlsx
 ```
 
-The tool will:
+### REST API
 
-1. Load the dataset
-2. Inspect the data
-3. Remove duplicate rows
-4. Remove rows with missing values
-5. Generate a summary report
-6. Export the cleaned dataset
+```bash
+python main.py --url https://jsonplaceholder.typicode.com/users
+```
 
+# Pipeline Workflow
 
-## Sample Datasets
-
-The repository includes sample CSV, JSON, and Excel datasets to demonstrate the expected input format.
-
-
-## Current Version
-
-V2
-
-
-## Future Improvements
-
-* Multiple file processing support
-* Logging system
-* Enhanced error handling
-* Configurable cleaning strategies
-* Database support (MySQL/PostgreSQL)
-* API data ingestion
-* User Interface (UI)
+```
+Load Dataset
+      │
+      ▼
+Inspect Dataset
+      │
+      ▼
+Clean Dataset
+      │
+      ▼
+Generate Report
+      │
+      ▼
+Export Output
+```
 
 
-## Technologies Used
 
-* Python
-* Pandas
-* Rich
-* Argparse
-* OpenPyXL
-* Sys
+# Sample Datasets
+
+The repository contains sample CSV, JSON and Excel datasets for testing.
+
+
+# Current Version
+
+**V3**
+
+# Planned Improvements
+
+- Data validation
+- Logging system
+- Configurable cleaning strategies
+- Database support (MySQL/PostgreSQL)
+- Multiple file processing
+- Better exception handling
+- YAML/JSON configuration support
+- Unit tests
+
+
+
+# Technologies Used
+
+- Python
+- Pandas
+- Rich
+- Requests
+- Argparse
+- OpenPyXL
+- Sys
