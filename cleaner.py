@@ -6,6 +6,6 @@ def clean_duplicates(df:pd.DataFrame) -> pd.DataFrame:
     return df.drop_duplicates()
 
 def handle_missingvalues(df):
-    return df.dropna()
+    return df.dropna() 
 
 
