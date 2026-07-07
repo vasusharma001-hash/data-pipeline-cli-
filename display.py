@@ -9,13 +9,12 @@ console = Console()
 
 console.print(
         Panel(
-                Align.center("Reads CSV,JSON and EXCEL files and generates insights"),
-             title= "Data pipeline cli tool",
-             subtitle= "V2",
+                Align.center("Read • Inspect • Clean • Export Datasets "),
+             title= " DATA PIPELINE CLI TOOL  v3 ",
              title_align = "center",
              subtitle_align = "center",
-             width = 100,
-             height = 10,
+             width = 80,
+             height = 4,
               
               
         )
@@ -26,6 +25,30 @@ console.print(
 
 from rich.console import Console
 from rich.table import Table
+
+def show_shape(shape , title):
+ console = Console()
+
+ table = Table(title= title)
+ table.add_column("metrics")
+ table.add_column("value")
+
+ table.add_row("Rows" , str(shape)[1])
+ table.add_row("Columns" , str(shape)[4])
+
+ console.print(table)
+
+ 
+def show_columns(columns , title):
+  console = Console()
+
+  table = Table(title = title)
+  table.add_column("Columns Name")
+
+  for column in columns:
+   table.add_row(column)
+  console.print(table)
+
 
 def show_report(df , title):
  console = Console()

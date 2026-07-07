@@ -1,5 +1,8 @@
 import pandas as pd 
+import requests
 import sys
+
+
 
 def load_data(args_file):
 
@@ -11,9 +14,33 @@ def load_data(args_file):
      
     elif args_file.endswith(".xlsx"):
       return pd.read_excel(args_file)
+    
     else :
-     print("file format not supoorted")
+     print("file format not supported")
      sys.exit()
      
 
+def load_api(url):
 
+    try:
+       response = requests.get(url)
+       response.raise_for_status()
+
+       api_data = response.json()
+
+       df = pd.DataFrame(api_data)
+       new_df = pd.json_normalize(api_data)
+       return(new_df)
+
+    except requests.exceptions.RequestException as e:
+     print(f"API error : {e}")
+    sys.exit()
+
+
+
+
+
+
+
+
+ 

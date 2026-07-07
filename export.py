@@ -15,3 +15,12 @@ def export_output(cleaned_df , args_file):
 
      )
     print("output saved")
+
+
+def export_api(cleaned_df):
+  cleaned_df.to_json("output.json",
+                     orient = "records",
+                     indent = 4
+                     
+                     )
+  print("output saved")
