@@ -28,7 +28,6 @@ def load_api(url):
 
        api_data = response.json()
 
-       df = pd.DataFrame(api_data)
        new_df = pd.json_normalize(api_data)
        return(new_df)
 

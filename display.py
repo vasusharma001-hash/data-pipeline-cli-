@@ -33,8 +33,8 @@ def show_shape(shape , title):
  table.add_column("metrics")
  table.add_column("value")
 
- table.add_row("Rows" , str(shape)[1])
- table.add_row("Columns" , str(shape)[4])
+ table.add_row("Rows" , str(shape[0]))
+ table.add_row("Columns" , str(shape[1]))
 
  console.print(table)
 
