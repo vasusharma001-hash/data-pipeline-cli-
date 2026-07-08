@@ -1,7 +1,6 @@
 import argparse 
 from rich import print
-import pandas as pd
-from cleaner import clean_duplicates , handle_missingvalues
+from cleaner import clean_duplicates , handle_missing_values
 from loader import load_api , load_data
 from export import export_api , export_output
 from display import show_report , show_columns , show_shape
@@ -10,12 +9,29 @@ from display import show_report , show_columns , show_shape
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--file" ,
-                    help = "INPUT CSV , JSON AND EXCEL FILES")
+                    help = "INPUT CSV , JSON AND EXCEL FILES"
+                    )
+
 parser.add_argument("--url",
                      type = str ,
                      help = "REST API URL" # tells the user what to give as input in --url
                                               
                      )
+parser.add_argument("--duplicates",
+                    type = str,
+                    choices=["remove" , "keep"],
+                    default="remove",
+                    help= "Duplicate Handling Strategy"
+                     )
+
+parser.add_argument("--missing",
+                    type= str ,
+                    choices= ["drop" , "keep" ,
+                              "mean", "mode", "median"],
+                    default= "drop",
+                    help= "Missing Values Handling Strategy"
+
+                    )
 
 args = parser.parse_args()
 
@@ -33,8 +49,8 @@ show_columns(df.columns , "INDEX")
 show_report(df , "BEFORE CLEANING")
 
 
-cleaned_df = clean_duplicates(df)
-cleaned_df = handle_missingvalues(cleaned_df)
+cleaned_df = clean_duplicates(df , args.duplicates)
+cleaned_df = handle_missing_values(cleaned_df , args.missing)
 
 
 #inspect_data(cleaned_df) 

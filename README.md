@@ -25,8 +25,8 @@ This project automates common data preparation tasks and generates a clean, stru
 - Load data directly from REST APIs
 - Automatically flatten nested JSON responses
 - Inspect dataset structure
-- Remove duplicate rows
-- Remove rows containing missing values
+- Configurable duplicate handling (remove / keep)
+- Configurable missing value handling (drop / keep / mean / median / mode)
 - Display formatted reports using Rich
 - Export cleaned datasets
 - CLI interface using argparse
@@ -81,7 +81,7 @@ README.md
 
 - **main.py** — Controls the complete pipeline workflow
 - **loader.py** — Loads data from files and REST APIs
-- **cleaner.py** — Removes duplicates and missing values
+- **cleaner.py** — Performs configurable data cleaning operations
 - **display.py** — Generates Rich terminal reports
 - **export.py** — Exports cleaned datasets
 
@@ -123,6 +123,51 @@ python main.py --file sample_data.xlsx
 python main.py --url https://jsonplaceholder.typicode.com/users
 ```
 
+# Cleaning Strategies
+
+## Duplicate Handling
+
+Supported strategies:
+
+- `remove` (default)
+- `keep`
+
+Examples:
+
+```bash
+python main.py --file sample_data.csv --duplicates remove
+```
+
+```bash
+python main.py --file sample_data.csv --duplicates keep
+```
+
+---
+
+## Missing Value Handling
+
+Supported strategies:
+
+- `drop` (default)
+- `keep`
+- `mean`
+- `median`
+- `mode`
+
+Examples:
+
+```bash
+python main.py --file sample_data.csv --missing mean
+```
+
+```bash
+python main.py --file sample_data.csv --duplicates remove --missing mode
+```
+
+```bash
+python main.py --file sample_data.csv --duplicates keep --missing keep
+```
+
 # Pipeline Workflow
 
 ```
@@ -132,7 +177,10 @@ Load Dataset
 Inspect Dataset
       │
       ▼
-Clean Dataset
+Handle Duplicates
+      │
+      ▼
+Handle Missing Values
       │
       ▼
 Generate Report
@@ -141,6 +189,15 @@ Generate Report
 Export Output
 ```
 
+## Cleaning Order
+
+Cleaning operations are always executed in the following order:
+
+1. Handle duplicate rows
+2. Handle missing values
+3. Export the cleaned dataset
+
+**Note:** Missing value strategies (`mean`, `median`, and `mode`) are calculated after the duplicate handling strategy has been applied. Therefore, statistical values may differ depending on whether duplicate rows are removed or kept.
 
 
 # Sample Datasets
@@ -150,19 +207,20 @@ The repository contains sample CSV, JSON and Excel datasets for testing.
 
 # Current Version
 
-**V3**
+**V3.1**
+
 
 # Planned Improvements
 
+- Chunked processing for large datasets
 - Data validation
 - Logging system
-- Configurable cleaning strategies
 - Database support (MySQL/PostgreSQL)
 - Multiple file processing
 - Better exception handling
 - YAML/JSON configuration support
+- Additional cleaning strategies (forward fill, backward fill)
 - Unit tests
-
 
 
 # Technologies Used

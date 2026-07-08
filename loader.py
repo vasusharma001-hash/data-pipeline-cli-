@@ -33,7 +33,7 @@ def load_api(url):
 
     except requests.exceptions.RequestException as e:
      print(f"API error : {e}")
-    sys.exit()
+    sys.exit(1)
 
 
 
