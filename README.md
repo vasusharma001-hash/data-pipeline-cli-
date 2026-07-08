@@ -207,7 +207,7 @@ The repository contains sample CSV, JSON and Excel datasets for testing.
 
 # Current Version
 
-**V3.1**
+**V3**
 
 
 # Planned Improvements
