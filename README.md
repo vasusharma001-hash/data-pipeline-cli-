@@ -64,7 +64,7 @@ data-pipeline-cli/
 ├── sample_data.csv
 ├── sample_data.json
 ├── sample_data.xlsx
-├── large_data_set.csv
+|
 │
 ├── screenshots/
 │   ├── small-dataset.png
