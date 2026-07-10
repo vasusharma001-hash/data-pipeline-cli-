@@ -134,19 +134,19 @@ Large CSV files are automatically processed using chunked loading to reduce memo
 
 ## Small Dataset Processing
 
-![Small Dataset](screenshots/small-dataset.png)
+![Small Dataset](screenshots/small_dataset.png)
 
 Processes CSV, JSON, and Excel datasets by inspecting the dataset, removing duplicates, handling missing values, and exporting the cleaned output.
 
 ## Large Dataset Processing
 
-![Large Dataset](screenshots/large-dataset.png)
+![Large Dataset](screenshots/large_dataset.png)
 
 Large CSV files (>100 MB) are automatically processed in chunks, allowing the tool to process datasets that do not fit entirely into memory.
 
 ## REST API Processing
 
-![REST API Processing](screenshots/api-processing.png)
+![REST API Processing](screenshots/api_processing.png)
 
 Load data directly from REST APIs, automatically flatten nested JSON responses, inspect the dataset, apply cleaning strategies, and export the processed output.
 
