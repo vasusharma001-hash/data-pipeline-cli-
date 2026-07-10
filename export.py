@@ -1,26 +1,63 @@
-def export_output(cleaned_df , args_file):
+import sys
+
+
+def export_output(cleaned_df, args_file, append=False):
+
     if args_file.endswith(".csv"):
-     cleaned_df.to_csv("output.csv" , index=False)
+
+        if append:
+            cleaned_df.to_csv(
+                args_file,
+                index=False,
+                mode="a",
+                header=False
+            )
+
+        else:
+            cleaned_df.to_csv(
+                args_file,
+                index=False,
+                mode="w",
+                header=True
+            )
+            print("output file : output.csv")
+
 
     elif args_file.endswith(".xlsx"):
-      cleaned_df.to_excel("output.xlsx" , index =False)
+
+        cleaned_df.to_excel(
+            args_file,
+            index=False
+        )
+        print("output file : output.xlsx")
 
 
     elif args_file.endswith(".json"):
-     cleaned_df.to_json(
-                    "output.json",
-                    orient = "records", 
-                    indent = 4
+
+        cleaned_df.to_json(
+            args_file,
+            orient="records",
+            indent=4
+        )
+        print("output file : output.json")
+    else:
+        print("Output File Not Supported")
+        sys.exit(1)
 
 
-     )
-    print("output saved")
+def export_api(cleaned_df, args_file):
+
+     if args_file.endswith(".json"):
+
+        cleaned_df.to_json(
+            args_file,
+            orient="records",
+            indent=4
+        )
+        print("Output file : Output.json")
 
 
-def export_api(cleaned_df):
-  cleaned_df.to_json("output.json",
-                     orient = "records",
-                     indent = 4
-                     
-                     )
-  print("output saved")
+     else:
+        print("Output File Not Supported")
+        sys.exit(1)
+

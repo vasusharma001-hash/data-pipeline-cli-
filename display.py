@@ -3,7 +3,7 @@ from rich.panel import Panel
 from rich.console import Console
 from rich.align import Align
 from rich.text import Text
-
+from rich.table import Table
 
 console = Console()
 
@@ -23,15 +23,14 @@ console.print(
 )
 
 
-from rich.console import Console
-from rich.table import Table
+
 
 def show_shape(shape , title):
  console = Console()
 
  table = Table(title= title)
- table.add_column("metrics")
- table.add_column("value")
+ table.add_column("Metrics")
+ table.add_column("Value")
 
  table.add_row("Rows" , str(shape[0]))
  table.add_row("Columns" , str(shape[1]))
@@ -39,11 +38,11 @@ def show_shape(shape , title):
  console.print(table)
 
  
-def show_columns(columns , title):
+def show_columns(columns):
   console = Console()
 
-  table = Table(title = title)
-  table.add_column("Columns Name")
+  table = Table()
+  table.add_column("COLUMN NAMES")
 
   for column in columns:
    table.add_row(column)
@@ -55,8 +54,8 @@ def show_report(df , title):
 
  table = Table(title= title)
 
- table.add_column("metrics")
- table.add_column("value")
+ table.add_column("Metrics")
+ table.add_column("Value")
  
 
  table.add_row("Rows", str(len(df)))
@@ -66,3 +65,20 @@ def show_report(df , title):
 
  console.print(table)
 
+from rich.console import Console
+from rich.table import Table
+
+
+def show_large_dataset_info(file_name, file_size):
+
+    console = Console()
+
+    table = Table(title="LARGE DATASET INFORMATION")
+
+    table.add_column("Metric")
+    table.add_column("Value")
+
+    table.add_row("File Name", file_name)
+    table.add_row("File Size", f"{file_size:.2f} MB")
+
+    console.print(table)
