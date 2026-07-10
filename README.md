@@ -146,7 +146,7 @@ Large CSV files (>100 MB) are automatically processed in chunks, allowing the to
 
 ## REST API Processing
 
-![REST API Processing](screenshots/api_processing.png)
+![REST API Processing](screenshots/API_processing.png)
 
 Load data directly from REST APIs, automatically flatten nested JSON responses, inspect the dataset, apply cleaning strategies, and export the processed output.
 
