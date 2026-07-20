@@ -59,7 +59,7 @@ data-pipeline-cli/
 ├── cleaner.py
 ├── display.py
 ├── export.py
-├── create_sample.py
+├
 │
 ├── sample_data.csv
 ├── sample_data.json
